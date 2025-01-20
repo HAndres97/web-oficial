@@ -1,14 +1,21 @@
 <?php
-/*
-    Mirar lo de BASEURL
-*/
+// filepath: /c:/xampp/htdocs/WebCarlos/template/sesion.php
+
+// Iniciar la sesión
 session_start();
-include 'administrador/config/databaseconnect.php';
-include 'funciones.php';
-include 'actualizar_intereses.php';
+
+// Incluir archivos necesarios
+include_once 'administrador/config/databaseconnect.php';
+include_once 'funciones.php';
+include_once 'actualizar_intereses.php';
+
+// Verificar si el usuario está autenticado
 if (!isset($_SESSION['usuario'])) {
-    header("location:login.php");
+    // Redirigir al usuario a la página de inicio de sesión
+    header("Location: login.php");
+    // Destruir la sesión
     session_destroy();
-    die();
+    // Terminar el script
+    exit();
 }
 ?>

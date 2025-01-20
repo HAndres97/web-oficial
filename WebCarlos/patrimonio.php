@@ -1,8 +1,5 @@
 <?php
     include 'template/sesion.php';
-    include 'template/cabecera.php';
-?>
-<?php
     if(isset($_POST['submit'])){
         $fname = $_POST['fname'];
         $cantidad = $_POST['cantidad'];
@@ -14,6 +11,7 @@
         }
     }
 ?>
+<?php include 'template/cabecera.php'; ?>
     <div class="body">
         <div class="container-xxl px-1 py-5 mx-auto">
             <div class="row d-flex justify-content-center">
