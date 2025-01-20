@@ -10,8 +10,9 @@
     <!-- Link de Bootstrap -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha3/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-     <!-- Bootstrap Icons -->
-     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.0/font/bootstrap-icons.min.css">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.0/font/bootstrap-icons.min.css">
     <!-- CSS Registrar Cliente -->
     <link rel="stylesheet" href="css/registrar_cliente.css">
     <!-- CSS Clientes -->
@@ -30,7 +31,6 @@
             color: #000 !important;
             /* Cambia el color del texto a negro */
         }
-        
     </style>
     <!-- JavaScript General -->
     <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
@@ -84,6 +84,13 @@
                     <li class="nav-item">
                         <a class="nav-link display-6 <?php echo $current_page == 'pagos.php' ? 'active' : ''; ?>"
                             href="pagos.php">Gastos</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link display-6" href="outlogin.php">
+                            <i class="bi bi-box-arrow-right"></i> Salir
+                        </a>
                     </li>
                 </ul>
             </div>
