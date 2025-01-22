@@ -41,7 +41,7 @@ $result_patrimonio = mysqli_query($conn, $sql_patrimonio);
 $row_patrimonio = mysqli_fetch_assoc($result_patrimonio);
 $total_patrimonio = number_format($row_patrimonio['total_patrimonio'], 2);
 // Actualizacion de interes
-if (isset($_GET['id']) & isset($_GET['payment']) ) {
+if (isset($_GET['id']) & isset($_GET['payment'])) {
         $id = $_GET['id'];
         $payment = $_GET['payment'];
         $fecha_pago = $_GET['fecha_pago'];
@@ -71,6 +71,9 @@ if (isset($_GET['id']) & isset($_GET['payment']) ) {
         } else {
                 echo "Error: " . $sql . "<br>" . mysqli_error($conn);
         }
+        // Redirigir para evitar reenvío de formulario
+        header("Location: index.php");
+        exit();
 
 }
 // Actualizacion de morosidad
@@ -107,6 +110,9 @@ if (isset($_GET['id_morosidad'])) {
         } else {
                 echo "Error: " . $sql . "<br>" . mysqli_error($conn);
         }
+        // Redirigir para evitar reenvío de formulario
+        header("Location: index.php");
+        exit();
 }
 // Consulta para mostrar intereses de los prestamos activos y pendientes
 $sql = "
@@ -160,10 +166,14 @@ $consulta_morosidad = mysqli_query($conn, $sql_morosidad);
 <div class="container mt-5">
         <div class="row">
                 <!-- Div redondo con cantidad en el medio -->
-                <div class="col-md-6 d-flex justify-content-center align-items-center mb-4 mb-md-0">
+                <div class="col-md-6 d-flex flex-column justify-content-center align-items-center mb-4 mb-md-0">
                         <div class="rounded-circle bg-primary text-white d-flex justify-content-center align-items-center"
                                 style="width: 200px; height: 200px;">
                                 <h2><?php echo $total_patrimonio; ?> €</h2>
+                        </div>
+                        <!-- Boton de modificar patrimonio -->
+                        <div>
+                                <a href="modificar_patrimonio.php" class="btn btn-primary mt-3">Modificar Patrimonio</a>
                         </div>
                 </div>
                 <!-- Div dividido en dos filas -->
@@ -172,7 +182,8 @@ $consulta_morosidad = mysqli_query($conn, $sql_morosidad);
                                 <div class="card">
                                         <div class="card-body p-3">
                                                 <h5 class="card-title text-uppercase mb-2">Gastos de
-                                                        <?php echo $mes_actual ?> </h5>
+                                                        <?php echo $mes_actual ?>
+                                                </h5>
                                                 <p class="card-text mb-0">Total Gastos: <?php echo $total_gastos; ?> €
                                                 </p>
                                         </div>
@@ -180,9 +191,11 @@ $consulta_morosidad = mysqli_query($conn, $sql_morosidad);
                                 <div class="card">
                                         <div class="card-body p-3">
                                                 <h5 class="card-title text-uppercase mb-2">Inversiones de
-                                                        <?php echo $mes_actual ?> </h5>
+                                                        <?php echo $mes_actual ?>
+                                                </h5>
                                                 <p class="card-text mb-0">Total Inversiones:
-                                                        <?php echo $total_inversiones; ?> €</p>
+                                                        <?php echo $total_inversiones; ?> €
+                                                </p>
                                         </div>
                                 </div>
                         </div>
